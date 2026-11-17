@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farah Osama — Data Analytics Portfolio</title>
+<style>
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: #333;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+nav .logo { font-size: 24px; font-weight: bold; }
+nav ul { display: flex; list-style: none; gap: 25px; }
+nav ul li a {
+    text-decoration: none; color: white; font-weight: 500; transition: 0.3s;
+}
+nav ul li a:hover { color: #a1c181; }
+
+/* Hero Section */
+.hero {
+    padding: 120px 40px;
+    text-align: center;
+    background: #e0e0e0;
+    color: #222;
+}
+.hero h1 { font-size: 48px; margin-bottom: 15px; }
+.hero p { font-size: 20px; max-width: 600px; margin: auto; }
+.hero .buttons {
+    margin-top: 25px;
+    display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
+}
+.hero a.button {
+    padding: 12px 25px; text-decoration: none; color: #fff;
+    background: #222; border-radius: 8px; font-weight: 500; transition: 0.3s;
+}
+.hero a.button:hover { background: #a1c181; }
+
+/* Sections */
+section { padding: 60px 40px; max-width: 1000px; margin: auto; }
+h2 { font-size: 36px; color: #333; margin-bottom: 40px; text-align: center; }
+
+/* Skills */
+.skills {
+    display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
+}
+.skill-card {
+    background: #fff; padding: 20px; border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); width: 180px;
+    display: flex; flex-direction: column; align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.skill-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+.skill-card img { width: 40px; margin-bottom: 10px; }
+.skill-card p { text-align: center; font-weight: 500; }
+
+/* Projects */
+.projects { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
+.project-card {
+    background: #fff; width: 320px; padding: 25px; border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    cursor: pointer; position: relative;
+}
+.project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); background: #f0f4f0; }
+.project-card h3 { color: #222; margin-bottom: 8px; }
+.project-card p { font-size: 15px; margin-bottom: 8px; }
+
+/* Modal */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+.modal-content {
+    background-color: #f5f5f5;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    animation: fadeIn 0.4s;
+}
+.modal-images div {
+    margin-bottom: 20px;
+}
+
+.modal-images img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.modal-images p {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #333;
+}
+
+.close {
+    color: #333; float: right;
+    font-size: 28px; font-weight: bold;
+    cursor: pointer;
+}
+.close:hover { color: #a1c181; }
+
+/* Contact */
+.contact-box { text-align: center; background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.contact-box p { font-size: 18px; margin-bottom: 15px; }
+.email-btn { padding: 12px 28px; background: #222; color: white; text-decoration: none; border-radius: 8px; font-weight: 500; transition: 0.3s; }
+.email-btn:hover { background: #a1c181; }
+
+footer { text-align: center; padding: 15px; margin-top: 20px; background: #ddd; }
+
+@keyframes fadeIn { from {opacity:0} to {opacity:1} }
+
+@media(max-width:768px){
+    nav { flex-direction: column; gap: 15px; }
+    .projects { flex-direction: column; align-items: center; gap: 30px; }
+    .hero .buttons { flex-direction: column; gap: 15px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">Farah Osama</div>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="hero">
+    <h1> I'm Farah 👋</h1>
+    <p>I am a motivated Data Analyst skilled in Python, SQL, Excel, and Power BI, with experience in cleaning data, visualizing insights, and building dashboards that support smart business decisions.</p>
+    <div class="buttons">
+        <a href="https://www.linkedin.com/in/farah-osama-593b6024a/" class="button" target="_blank">LinkedIn</a>
+        <a href="https://github.com/FarahOsama1/" class="button" target="_blank">GitHub</a>
+    </div>
+</div>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>I am a dedicated Data Analyst with experience working on multiple projects across different fields and collaborating with diverse teams.</p>
+    <p> I have strong skills in cleaning data, analyzing trends, and building clear visual dashboards I continuously develop myself through courses and hands-on projects, and I enjoy turning complex data into meaningful insights that support better decisions.</p>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+
+        <div class="skill-card">
+            <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python">
+            <p>Python</p>
+        </div>
+
+        <div class="skill-card">
+            <img src="https://img.icons8.com/color/48/000000/sql.png" alt="SQL">
+            <p>SQL</p>
+        </div>
+
+        <div class="skill-card">
+            <img src="https://img.icons8.com/color/48/000000/power-bi.png" alt="Power BI">
+            <p>Power BI</p>
+        </div>
+
+        <div class="skill-card">
+            <img src="https://img.icons8.com/color/48/000000/statistics.png" alt="Statistics">
+            <p>Statistics</p>
+        </div>
+
+        <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+            <p>Pandas</p>
+        </div>
+
+        <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
+            <p>NumPy</p>
+        </div>
+
+        <div class="skill-card">
+            <img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt="Excel">
+            <p>Excel (Pivot, Power Query)</p>
+        </div>
+
+        <div class="skill-card">
+            <img src="https://img.icons8.com/color/48/000000/data-configuration.png" alt="Data Modeling">
+            <p>Data Modeling</p>
+        </div>
+
+        <div class="skill-card">
+            <img src="https://img.icons8.com/ios-filled/50/000000/approve-and-update.png" alt="Data Quality">
+            <p>Data Quality & Validation</p>
+        </div>
+
+<div class="skill-card">
+    <img src="https://img.icons8.com/fluency/48/combo-chart.png" alt="Performance Optimization">
+    <p>Performance Optimization</p>
+</div>
+
+
+    </div>
+</section>
+
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+        <!-- Project Card 1 -->
+        <div class="project-card" onclick="openModal('modal1')">
+            <h3>📊 Sales & Performance Dashboard</h3>
+            <p><strong>Tools:</strong> Power BI ,Power Query</p>
+            <p>Interactive Power BI dashboard analyzing sales performance and business.</p>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="project-card" onclick="openModal('modal2')">
+            <h3>📈 churn-customers-Dashboard Model</h3>
+            <p><strong>Tools:</strong> Power BI ,Power Query</p>
+            <p>This dashboard provides insights into customer churn behavior using telecom dataset features such as total day calls, customer service calls, account length, international plan, and voicemail messages.</p>
+            <p>It helps in identifying patterns and trends that may influence customer churn.</p>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="project-card" onclick="openModal('modal3')">
+            <h3>📊 Real Estate Marketing Behavior Analysis</h3>
+            <p><strong>Tools:</strong> Python</p>
+            <p>Analyzed a real estate consumer behavior dataset to understand how scarcity and urgency marketing cues influence purchase intention.</p>
+        </div>
+
+        <!-- Project Card 4 -->
+        <div class="project-card" onclick="openModal('modal4')">
+            <h3>📈 Organizational Operations Evaluation</h3>
+            <p><strong>Tools:</strong> Python</p>
+            <p>This project analyzes a structured survey collected from participants across different industries, assessing key operational dimensions within the supply chain.</p>
+        </div>
+
+        <!-- Project Card 5 -->
+        <div class="project-card" onclick="openModal('modal5')">
+            <h3>📈 Dental Clinic Survey Analytics</h3>
+            <p><strong>Tools:</strong> Python, Power BI, Excel, Power Query</p>
+            <p>This project analyzes patient satisfaction data collected from a dental clinic survey.</p>
+            <p> The goal is to clean the dataset, evaluate reliability, explore correlations, run regression analysis, create Power BI visuals, and generate key insights about factors influencing patient commitment and recommendation behavior.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Modals -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal1')">&times;</span>
+        <h3>Sales & Performance Dashboard</h3>
+        <p>Interactive dashboard tracking sales KPIs with automated data refresh.</p>
+        
+        <div class="modal-images">
+            <div>
+    <img src="images/Screenshot295.png" alt="Dashboard Overview">
+    <p><strong>Dashboard Overview:</strong></p>
+    <p>- Shows total sales, total discounts, and total profit for a quick view of key statistics.</p>
+    <p>- Shows sales by year and month to track monthly totals each year.</p>
+    <p>- Shows sales per customer and per country, along with each customer's profit from their sales.</p>
+    <p>- Bar chart displays the quantity of each order based on the order date.</p>
+</div>
+
+            <div>
+                <img src="images/Screenshot296.png" alt="Dashboard Overview">
+                <p><strong>Dashboard Overview:</strong> </p>
+                <p>This visualization shows the median sales during the second quarter of 2024.</p>
+                <p>All other metrics and visuals adjust dynamically according to the second quarter of 2024.</p>
+            </div>
+            <div>
+                <img src="images/Screenshot297.png" alt="Dashboard Overview">
+                <p><strong>Dashboard Overview:</strong> “This view shows how each year is divided, and it allows us to select any month to see what happens during that period and how all other metrics change accordingly.”.</p>
+            </div>
+            <div>
+                <img src="images/Screenshot298.png" alt="Dashboard Overview">
+                <p><strong>Dashboard Overview:</strong> “We can also view the data by days, allowing us to understand the daily patterns and changes within each month and each year.”.</p>
+            </div>
+        </div>
+
+        <a href="https://github.com/FarahOsama1/powerbi-sales-dashboard" class="button" target="_blank" style="margin-top:15px;">View on GitHub</a>
+    </div>
+</div>
+
+
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal2')">&times;</span>
+        <h3>Customer Sigmentation Model</h3>
+        <p>Interactive Power BI dashboard analyzing customer churn in a telecom dataset to uncover patterns and insights.</p>
+        <div class="modal-images">
+            <img src="images/Screenshot302.png" alt="Dashboard Overview">
+            <p>KPIs: Show total day calls, customer service calls, international charges, and voicemail messages.</p>
+            <p>Customer Behavior: Active customers call more during day and night; inactive ones show lower activity.</p>
+            <p>International Plan: Customers with an international plan often have shorter account lengths.</p>
+            <p>Geography: Map highlights states with higher churn risk.</p>
+            <p>Filters: Can filter by Churn status or by State.</p>
+            <p>General Insight: Call activity, international plans, and location are key churn indicators.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/Screenshot304.png" alt="Dashboard Overview">
+            <p>Selecting Churn = True means we are looking only at customers who have left the service.</p>
+            <p>All visuals and insights on the dashboard update dynamically based on this selection.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/Screenshot305.png" alt="Dashboard Overview">
+            <p>Selecting a specific State filters the dashboard to show only customers from that state.</p>
+            <p>All visuals and insights update accordingly, reflecting data for the chosen location.</p>
+        </div>
+        <a href="https://github.com/FarahOsama1/powerbi-churn-customers-dashboard" class="button" target="_blank">View on GitHub</a>
+    </div>
+</div>
+
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal3')">&times;</span>
+        <h3>Real Estate Marketing Behavior Analysis</h3>
+        <p>Analyzed a real estate consumer behavior dataset to understand how scarcity and urgency marketing cues influence purchase intention.</p>
+        <div class="modal-images">
+            <img src="images/download4.png" alt="Data visualization">
+            <p>The correlation matrix illustrates the strength and direction of the relationships between the three main constructs in the survey: Scarcity, Urgency, and Purchase Intention.</p>
+            <p>The analysis shows positive correlations across all constructs, meaning that as perceptions of scarcity and urgency increase, purchase intention also tends to increase.</p>
+            <p>The strongest correlation is observed between Urgency and Purchase Intention, indicating that time-sensitive marketing messages (such as deadlines or limited-time offers) have a strong influence on consumers willingness to buy.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/download (1).png" alt="Data visualization">
+            <p>The chart helps compare how respondents reacted to individual items within the Scarcity, Urgency, and Purchase Intention constructs.</p>
+            <p>Most questions show a higher concentration of responses in the “Agree” and “Strongly Agree” categories, indicating generally positive perceptions toward the statements presented.</p>
+            <p>This visualization displays the distribution of responses for each survey question across the five-point Likert scale (from Strongly Disagree to Strongly Agree). </p>
+            <p>Each bar represents one question, segmented by the proportion of participants selecting each response level.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/download (2).png" alt="Data visualization">
+            <p>The bar chart presents the Cronbachs Alpha values for the three main constructs in the survey: Scarcity, Urgency, and Purchase Intention. </p>
+            <p>Cronbachs Alpha measures the internal consistency of items within each scale, indicating how reliably the questions capture the intended psychological construct.</p>
+            <p>The visualization includes a reference line at 0.70, making it easy to see that all constructs meet or exceed the minimum reliability standard.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/download.png" alt="Data visualization">
+            <p>This bar chart displays the distribution of gender among the survey respondents.</p>
+            <p> It shows the number of male and female participants, allowing for a quick understanding of the demographic balance in the dataset.</p>
+            <p>This imbalance is typical in survey-based datasets and does not significantly affect the overall analysis, especially since later statistical tests (t-tests) showed no significant difference between males and females in their purchase intention responses.</p>
+        </div>
+        <a href="https://github.com/FarahOsama297/Real-Estate-Marketing-Behavior-Analysis" class="button" target="_blank">View on GitHub</a>
+    </div>
+</div>
+
+<div id="modal4" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal4')">&times;</span>
+        <h3>Organizational Operations Evaluation</h3>
+        <p>This project analyzes a structured survey collected from participants across different industries, assessing key operational dimensions within the supply chain</p>
+        <div class="modal-images">
+            <img src="images/download (3).png" alt="correlation Overview">
+            <p>The correlation matrix shows the strength and direction of the relationships among the four main supply-chain dimensions: SCC, SCV, SCR, and SCP.</p>
+            <p>There are strong positive correlations between SCC, SCV, and SCR (r ≈ 0.68 ,0.76), indicating that improvements in internal processes, visibility, and resilience tend to move together.</p>
+            <p>SCP shows weaker but positive correlations with the other dimensions (r ≈ 0.33,0.37), suggesting that performance outcomes are influenced by operational factors, but less directly.</p>
+            <p>The matrix highlights how the operational dimensions reinforce one another and how each contributes—at different strengths—to overall supply-chain performance.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/Capture.PNG" alt="correlation feature">
+            <p>The chart shows how strongly each feature in the dataset is correlated with SCP (Supply Chain Performance). Each bar represents a variable, and the length of the bar indicates how much that variable is associated with overall performance.</p>
+            <p>Visibility (SCV) and Resilience (SCR) features show the strongest positive correlations with SCP, followed by Capabilities (SCC). Demographics like gender and age have almost no impact.</p>
+            <p>the chart highlights which operational factors have the strongest relationship with performance, helping identify the areas that should be prioritized for improvement.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/Capture1.PNG" alt="correlation feature">
+            <p>Visualized participant distribution across industries to ensure dataset diversity.</p>
+            <p>Highest representation came from Healthcare/Pharmaceuticals, Wholesale/Distribution, and Manufacturing.</p>
+            <p>Ensures that supply-chain insights reflect a broad mix of sectors rather than a single-industry bias.</p>
+        </div>
+        <a href="https://github.com/FarahOsama297/Organizational-Operations-Evaluation" class="button" target="_blank">View on GitHub</a>
+    </div>
+</div>
+
+
+<div id="modal5" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal5')">&times;</span>
+        <h3>Dental Clinic Survey Analytics</h3>
+        <p>This project analyzes patient satisfaction data collected from a dental clinic survey.</p>
+        <p> The goal is to clean the dataset, evaluate reliability, explore correlations, run regression analysis, create Power BI visuals, and generate key insights about factors influencing patient commitment and recommendation behavior.</p>
+        <div class="modal-images">
+            <img src="images/Screenshot (308).png" alt="correlation Overview">
+            <p>A Power BI dashboard was created to visually present:</p>
+            <p>Overall patient satisfaction levels</p>
+            <p>Visual breakdown of Sensory, Emotional, and Professional dimensions.</p>
+            <p>Key KPIs and interactive charts to help understand patient experience trends.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/Capture3.PNG" alt="correlation feature">
+            <p>Questions with higher correlation values show a stronger relationship with patient commitment, indicating which aspects of the service experience matter most to patients.</p>
+            <p>This visualization helps identify the key drivers of commitment, enabling the clinic to focus on the specific areas that contribute the most to patient loyalty and overall satisfaction.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/Capture4.PNG" alt="correlation feature">
+            <p>The visualization illustrates the impact of each survey dimension—Sensory, Emotional, and Professional—on the commitment outcome.</p>
+            <p>The bar chart displays the regression coefficients, showing how strongly each dimension contributes to predicting the commitment score.</p>
+            <p>The Sensory and Emotional dimensions demonstrate positive coefficients, indicating that improvements in these areas lead to higher patient commitment.</p>
+            <p>In contrast, the Professional dimension shows a negligible effect, suggesting that it has minimal influence on the commitment variable.</p>
+            <p>This visualization helps highlight which dimensions play the biggest role in shaping patient loyalty and where improvement efforts should be focused.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/Capture6.PNG" alt="correlation feature">
+            <p>The histograms display the distribution of responses for each survey dimension—Sensory, Emotional, and Professional.</p>
+            <p>These visualizations help identify how patient ratings are spread across the scale and reveal patterns such as skewness, concentration of responses, or variability within each dimension.</p>
+            <p>By examining the shape of each histogram, it becomes clear whether patients tend to give consistently high, moderate, or low scores.</p>
+            <p>In contrast, the Professional dimension shows a negligible effect, suggesting that it has minimal influence on the commitment variable.</p>
+            <p>This provides valuable insight into how patients perceive each aspect of their experience and highlights which dimensions show stronger or weaker satisfaction levels.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/Capture7.PNG" alt="correlation feature">
+            <p>The visualization compares the commitment levels between male and female patients.</p>
+            <p>Female patients show a slightly higher average commitment score (3.63) compared to male patients (3.50).</p>
+            <p>This indicates that female patients demonstrate a marginally stronger sense of loyalty toward the dental clinic.</p>
+            <p>The chart helps highlight gender-based differences in patient engagement, allowing the clinic to understand which group reports higher commitment and tailor improvement strategies accordingly.</p>
+        </div>
+        <div class="modal-images">
+            <img src="images/Capture8.PNG" alt="correlation feature">
+            <p>The visualization shows how commitment levels vary across different age groups.</p>
+            <p>Patients aged 18-25 reported the highest average commitment score (3.63), followed by those aged 26-35 (3.52). </p>
+            <p>Commitment levels decline slightly in the 36-45 group (3.43), while no valid responses were available for the 46-60 age range.</p>
+            <p>This pattern indicates that younger patients tend to show slightly stronger commitment to the dental clinic.</p>
+            <p>The chart helps identify which age segments are more engaged and where additional focus may be needed to improve commitment among older groups.</p>
+        </div>
+        <a href="https://github.com/FarahOsama297/Dental-Clinic-Survey-Analytics/tree/main" class="button" target="_blank">View on GitHub</a>
+    </div>
+</div>
+
+
+
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-box">
+        <p>Want to collaborate or have a question? Let's talk! 😊</p>
+        <a class="email-btn" 
+   target="_blank"
+   href="https://mail.google.com/mail/?view=cm&fs=1&to=farahosama1310@gmail.com&su=Collaboration%20Inquiry&body=Hello%20Farah%2C%0A%0AI%20would%20like%20to%20discuss%20...">
+   Email Me
+</a>
+
+    </div>
+</section>
+
+<footer>
+    © 2025 Farah Osama — Crafted with ❤️
+</footer>
+
+<script>
+function openModal(id) { document.getElementById(id).style.display = "block"; }
+function closeModal(id) { document.getElementById(id).style.display = "none"; }
+</script>
+
+</body>
+</html>
